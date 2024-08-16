@@ -8,7 +8,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 # Angular Project
 
-This project is an Angular application with a signup and login feature using mock data.
+This project is an Angular application with a signup and login feature.
 
 ## Setup Instructions
 
@@ -24,3 +24,8 @@ This project is an Angular application with a signup and login feature using moc
    git clone https://github.com/your-username/your-repository.git
    cd your-repository
    ```
+2. **Install dependencies:**
+```bash
+    git clone https://github.com/your-username/your-repository.git
+    cd your-repository
+```
