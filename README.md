@@ -26,6 +26,21 @@ This project is an Angular application with a signup and login feature.
    ```
 2. **Install dependencies:**
 ```bash
-    git clone https://github.com/your-username/your-repository.git
-    cd your-repository
+    npm install
 ```
+3. **Run the development server:**
+   ```bash
+    ng serve
+   ```
+
+### Build
+ ```bash
+  ng build
+ ```
+
+### Mock Data for Organizations
+You may use below data for login.
+```bash
+ { email: 'john@example.com', phone: '1234567890', name: 'John', password: 'john123' },
+    { email: 'jane@example.com', phone: '0987654321', name: 'Jane', password: 'jane123' },
+ ```
