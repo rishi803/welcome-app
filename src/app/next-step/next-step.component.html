@@ -24,6 +24,7 @@
               id="orgName"
               required
               list="orgNames"
+              (blur)="validateOrgName()"
               (input)="onInputChange('organizationName')"
               #organizationName="ngModel"
             />

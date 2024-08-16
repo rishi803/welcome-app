@@ -9,7 +9,7 @@ import { UserService } from '../services/user.service';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './next-step.component.html',
-  styleUrl: './next-step.component.css'
+  styleUrls: ['./next-step.component.css']
 })
 export class NextStepComponent implements OnInit {
   user: any;
@@ -23,12 +23,11 @@ export class NextStepComponent implements OnInit {
   cityErrorMessage: string | null = null;
   pincodeErrorMessage: string | null = null;
 
-
   @ViewChild('pincode') pincode!: ElementRef;
 
   constructor(private router: Router, private orgService: UserService) {
     const navigation = this.router.getCurrentNavigation();
-    this.user = navigation?.extras.state?.['user'] || this.orgService.getUser();;
+    this.user = navigation?.extras.state?.['user'] || this.orgService.getUser();
   }
 
   ngOnInit() {
@@ -39,12 +38,22 @@ export class NextStepComponent implements OnInit {
     this.cityErrorMessage = null;
     this.pincodeErrorMessage = null;
 
-   // Mock data for organizations
-   this.organizations = this.orgService.getOrganizations();
+    // Mock data for organizations
+    this.organizations = this.orgService.getOrganizations();
   }
 
   validateOrgId() {
-    this.orgIdError = !this.organizations.some(org => org.id === this.user.organizationId);
+    const org = this.organizations.find(o => o.id === this.user.organizationId);
+    if (!org) {
+      this.organizationIdErrorMessage = 'Unknown organization-id';
+    }
+  }
+
+  validateOrgName() {
+    const org = this.organizations.find(o => o.name === this.user.organizationName);
+    if (!org) {
+      this.organizationNameErrorMessage = 'Unknown organization name';
+    }
   }
 
   goBack() {
@@ -77,9 +86,12 @@ export class NextStepComponent implements OnInit {
 
   onSubmit() {
     console.log(this.user);
-     // Validate organization name
-     if (!this.user.organizationName) {
+
+    // Validate organization name
+    if (!this.user.organizationName) {
       this.organizationNameErrorMessage = 'Organization Name is required.';
+    } else {
+      this.validateOrgName();
     }
 
     // Validate organization ID
@@ -102,6 +114,8 @@ export class NextStepComponent implements OnInit {
     // Validate city
     if (!this.user.city) {
       this.cityErrorMessage = 'City is required.';
+    } else if (!/^[a-zA-Z\s]+$/.test(this.user.city)) {
+      this.cityErrorMessage = 'City must contain only letters.';
     }
 
     // Validate pincode
@@ -113,15 +127,13 @@ export class NextStepComponent implements OnInit {
 
     // Check if the form is valid before proceeding
     if (
-        !this.organizationNameErrorMessage && !this.organizationIdErrorMessage &&
-        !this.designationErrorMessage && !this.birthdateErrorMessage &&
-        !this.cityErrorMessage && !this.pincodeErrorMessage) {
+      !this.organizationNameErrorMessage && !this.organizationIdErrorMessage &&
+      !this.designationErrorMessage && !this.birthdateErrorMessage &&
+      !this.cityErrorMessage && !this.pincodeErrorMessage
+    ) {
       console.log('Form Submitted', this.user);
       // Proceed with form submission logic
       this.router.navigate(['/signup-success'], { state: { user: this.user } });
     }
-    // Add logic here for when the form is submitted.
   }
-
-
 }
