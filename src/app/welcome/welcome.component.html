@@ -1,0 +1,30 @@
+<!-- src/app/welcome/welcome.component.html -->
+
+<div class="card-container">
+    <div class="card">
+    <div class="left-side">
+      <img src="https://c8.alamy.com/comp/2BEFCEF/young-man-programmer-working-on-computer-with-code-on-screen-student-programming-vector-concept-man-work-with-computer-programmer-professional-and-character-of-freelancer-on-workplace-illustration-2BEFCEF.jpg" alt="Welcome Image" />
+    </div>
+    <div class="right-side">
+        <div class="form-container">
+      <h2>Welcome</h2>
+      <form>
+        <div class="form-group">
+          <label for="email">Enter Email ID</label>
+          <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Enter Email ID" />
+        </div>
+        <p style="color:black">(or)</p>
+        <div class="form-group">
+          <label for="phone">Enter Mobile No.</label>
+          <input type="tel" id="phone" [(ngModel)]="phone" name="phone" placeholder="Enter Mobile No." />
+        </div>
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+        <button type="submit" (click)="onSubmit()">Next</button>
+        <!-- <a routerLink="login">Next</a> -->
+      </form>
+    </div>
+</div>
+</div>
+</div>
+
+  

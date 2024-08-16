@@ -1,0 +1,29 @@
+<!-- src/app/login/login.component.html -->
+<div class="card-container">
+    <div class="card">
+    <div class="left-side">
+      <img src="https://c8.alamy.com/comp/2BEFCEF/young-man-programmer-working-on-computer-with-code-on-screen-student-programming-vector-concept-man-work-with-computer-programmer-professional-and-character-of-freelancer-on-workplace-illustration-2BEFCEF.jpg" alt="Welcome Image" />
+    </div>
+    <div class="right-side">
+        <div class="form-container">
+      <div class="logo">
+        <img src="https://cdn.freebiesupply.com/logos/large/2x/cool-logo-png-transparent.png" alt="Logo" />
+      </div>
+      <h2 *ngIf="userName">Welcome Back, {{ userName }}!</h2>
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="email">Enter Email ID</label>
+          <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="LoremIpsum@gmail.com" readonly />
+        </div>
+        <div class="form-group">
+          <label for="password">Enter Password</label>
+          <input type="password" id="password" [(ngModel)]="password" name="password" placeholder="Password" (input)="onPasswordInput()" />
+        </div>
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+        <button type="submit">Next</button>
+      </form>
+    </div>
+</div>
+</div>
+  </div>
+  

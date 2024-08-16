@@ -1,0 +1,38 @@
+<div class="card-container">
+    <div class="card">
+      <div class="left-side">
+        <img src="https://c8.alamy.com/comp/2BEFCEF/young-man-programmer-working-on-computer-with-code-on-screen-student-programming-vector-concept-man-work-with-computer-programmer-professional-and-character-of-freelancer-on-workplace-illustration-2BEFCEF.jpg" alt="Image Description">
+      </div>
+      <div class="right-side">
+        <div class="form-container">
+          <h2>Create Account</h2>
+          <div class="progress-bars">
+            <div class="progress-bar filled"></div>
+            <div class="progress-bar"></div>
+          </div>
+          <form (ngSubmit)="onSubmit()" #signUpForm="ngForm">
+            <div class="form-group">
+              <label for="mail">Enter Email ID</label>
+              <input type="email" [(ngModel)]="user.email" name="email" placeholder="john@example.com" id="mail" (input)="onMailInput()" required email/>
+              <div *ngIf="emailErrorMessage" class="error-message">{{ emailErrorMessage }}</div>
+            </div>
+  
+            <div class="form-group">
+              <label for="name">Enter Full Name</label>
+              <input type="text" [(ngModel)]="user.fullName" name="fullName" placeholder="Full Name" id="name" (input)="onNameInput()" required/>
+              <div *ngIf="fullNameErrorMessage" class="error-message">{{ fullNameErrorMessage }}</div>
+            </div>
+  
+            <div class="form-group">
+              <label for="pwd">Create Password</label>
+              <input type="password" [(ngModel)]="user.password" name="password" placeholder="Password" id="pwd" (input)="onPasswordInput()" required/>
+              <div *ngIf="passwordErrorMessage" class="error-message">{{ passwordErrorMessage }}</div>
+            </div>
+  
+            <button type="submit">Next</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

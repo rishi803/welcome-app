@@ -1,0 +1,128 @@
+<div class="card-container">
+    <div class="card">
+      <div class="left-side">
+        <img
+          src="https://c8.alamy.com/comp/2BEFCEF/young-man-programmer-working-on-computer-with-code-on-screen-student-programming-vector-concept-man-work-with-computer-programmer-professional-and-character-of-freelancer-on-workplace-illustration-2BEFCEF.jpg"
+          alt="Image Description"
+        />
+      </div>
+      <div class="right-side">
+        <div class="form-container">
+          <h2>Create Account</h2>
+          <div class="progress-bars">
+            <div class="progress-bar filled"></div>
+            <div class="progress-bar filled"></div>
+          </div>
+          <button (click)="goBack()" class="mb-2">👈Go Back</button>
+          <form (ngSubmit)="onSubmit()" #nextStepForm="ngForm">
+            <label for="orgName">Organization Name :</label>
+            <input
+              type="text"
+              [(ngModel)]="user.organizationName"
+              name="organizationName"
+              placeholder="Organization Name"
+              id="orgName"
+              required
+              list="orgNames"
+              (input)="onInputChange('organizationName')"
+              #organizationName="ngModel"
+            />
+            <div *ngIf="organizationNameErrorMessage" class="error">
+              {{organizationNameErrorMessage}}
+            </div>
+            <datalist id="orgNames">
+              <option *ngFor="let org of organizations" [value]="org.name"></option>
+            </datalist>
+            <label for="orgId">Organization ID :</label>
+            <input
+              type="text"
+              [(ngModel)]="user.organizationId"
+              name="organizationId"
+              placeholder="Organization ID"
+              id="orgId"
+              required
+              (blur)="validateOrgId()"
+              (input)="onInputChange('organizationId')"
+              list="orgIds"
+              #organizationId="ngModel"
+            />
+            <div *ngIf="organizationIdErrorMessage" class="error mb-1">
+              {{organizationIdErrorMessage}}
+            </div>
+            <datalist id="orgIds">
+              <option *ngFor="let org of organizations" [value]="org.id"></option>
+            </datalist>
+            <label for="designation">Designation :</label>
+            <input
+              type="text"
+              [(ngModel)]="user.designation"
+              name="designation"
+              id="designation"
+              required
+              list="designations"
+              (input)="onInputChange('designation')"
+              #designation="ngModel"
+            />
+            <div *ngIf="designationErrorMessage" class="error mb-1">
+              {{designationErrorMessage}}
+            </div>
+            <datalist id="designations">
+              <option value="Manager"></option>
+              <option value="Developer"></option>
+              <option value="Designer"></option>
+            </datalist>
+            <label for="birthdate">Birthdate :</label>
+            <input
+              type="date"
+              [(ngModel)]="user.birthdate"
+              name="birthdate"
+              id="birthdate"
+              required
+              (input)="onInputChange('birthdate')"
+              #birthdate="ngModel"
+            />
+            <div *ngIf="birthdateErrorMessage" class="error mb-1">
+              {{birthdateErrorMessage}}
+            </div>
+            <div class="row">
+              <div class="column">
+                <label for="city">City :</label>
+                <input
+                  type="text"
+                  [(ngModel)]="user.city"
+                  name="city"
+                  placeholder="City"
+                  id="city"
+                  required
+                  (input)="onInputChange('city')"
+                  #city="ngModel"
+                />
+                <div *ngIf="cityErrorMessage" class="error mb-1">
+                  {{cityErrorMessage}}
+                </div>
+              </div>
+              <div class="column">
+                <label for="pincode">Pincode :</label>
+                <input
+                  type="text"
+                  [(ngModel)]="user.pincode"
+                  name="pincode"
+                  placeholder="Pincode"
+                  id="pincode"
+                  required
+                  pattern="^[0-9]{6}$"
+                  (input)="onInputChange('pincode')"
+                  #pincode="ngModel"
+                />
+                <div *ngIf="pincodeErrorMessage" class="error mb-1">
+                  {{pincodeErrorMessage}}
+                </div>
+              </div>
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

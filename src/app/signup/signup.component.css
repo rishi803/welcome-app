@@ -1,0 +1,19 @@
+
+  .progress-bars {
+    display: flex;
+    margin-bottom: 1rem;
+  }
+  
+  .progress-bar {
+    flex: 1;
+    height: 10px;
+    background: #b0bec5;
+    margin-right: 0.5rem;
+    border-radius: 5px;
+  }
+  
+  .progress-bar.filled {
+    background: #00796b;
+  }
+  
+  
